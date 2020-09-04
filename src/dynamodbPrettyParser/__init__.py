@@ -1,7 +1,13 @@
 from decimal import Decimal
 
 def parseResults(items):
-    items = items.get('Items') or []
+    items = items.get('Items') or items.get('Item')
+
+    if isinstance(items, dict):
+        is_single = True
+        items = [items]
+    else:
+        is_single = False
 
     def parseList(dynamoList):
         i = 0
@@ -21,11 +27,11 @@ def parseResults(items):
         'S': lambda x: x,
         'N': lambda x: (int, Decimal)[len(x.split('.')) - 1](x),
         'L': parseList,
-        'B': str,
+        'B': lambda x: x,
         'BS': parseList,
         'BOOL': lambda x: x == 'true',
         'NS': parseList,
-        'NULL': lambda: None,
+        'NULL': lambda x: None,
         'SS': list,
         'M': parseMap
     }
@@ -40,4 +46,6 @@ def parseResults(items):
         items[i] = newItem
         i += 1
 
+    if is_single:
+        items = items[0]
     return items
