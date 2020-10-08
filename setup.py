@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='dynamodb-prettyparser',
-    version='1.0.3',
+    version='1.0.4',
     description='Parses dynamodb responses into a list dictionaries with attribute names as keys',
     author='Mathew Moon',
     author_email='mmoon@quinovas.com',

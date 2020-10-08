@@ -2,8 +2,8 @@
 Dynamodb Pretty Parser
 ============================
 
-========================================================================
-THIS PACKAGE IS NOW PART OF the appsync-tools package Use it instead
+=======================================================================
+THIS PACKAGE IS NOW PART OF the appsync-tools package Use it instead   
 =======================================================================
 https://github.com/QuiNovas/appsync-tools
 
